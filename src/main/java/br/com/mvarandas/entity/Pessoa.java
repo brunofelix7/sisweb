@@ -25,7 +25,7 @@ import br.com.mvarandas.model.EnumSexo;
  * Classe que representa minha entidade pessoa no banco de dados
  * @author Bruno Felix
  */
-@Entity(name = "pessoa")
+@Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Pessoa {
 	

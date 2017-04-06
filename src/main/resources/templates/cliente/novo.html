@@ -51,16 +51,16 @@
 				<!-- Rua -->
 				<div class="col-sm-3">
 					<div class="form-group">
-						<label for="rua"><span style="color: red;">* </span>Rua</label>
-						<input id="rua" th:value="${endereco.rua}" type="text" class="form-control"/>
+						<label for="rua">Rua</label>
+						<input id="rua" name="rua" th:value="${endereco.rua}" type="text" class="form-control"/>
 					</div>
 				</div>
 				
 				<!-- Número -->
-				<div class="col-sm-1">
+				<div class="col-sm-2">
 					<div class="form-group">
-						<label for="numero"><span style="color: red;">* </span>Número</label>
-						<input id="numero" th:value="${endereco.numero}" type="text" class="form-control"/>
+						<label for="numero">Número</label>
+						<input id="numero" name="numero" th:value="${endereco.numero}" type="text" class="form-control"/>
 					</div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 			<div class="row">
 				<!-- Email -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
+					<div class="form-group">
 						<label for="email"><span style="color: red;">* </span>E-mail</label>
 						<input id="email" th:field="*{email}" type="text" class="form-control" placeholder="example@gmail.com"/>
 					</div>
@@ -77,9 +77,9 @@
 				
 				<!-- CEP -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.cep')} ? has-error">
-						<label for="cep"><span style="color: red;">* </span>CEP</label>
-						<input id="cep" th:field="*{endereco.cep}" type="text" class="form-control"/>
+					<div class="form-group">
+						<label for="cep">CEP</label>
+						<input id="cep" name="cep" th:value="${endereco.cep}" type="text" class="form-control"/>
 					</div>
 				</div>
 			</div>
@@ -96,9 +96,9 @@
 				
 				<!-- Bairro -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.bairro')} ? has-error">
-						<label for="bairro"><span style="color: red;">* </span>Bairro</label>
-						<input id="bairro" th:field="*{endereco.bairro}" type="text" class="form-control"/>
+					<div class="form-group">
+						<label for="bairro">Bairro</label>
+						<input id="bairro" name="bairro" th:value="${endereco.bairro}" type="text" class="form-control"/>
 					</div>
 				</div>
 			</div>
@@ -109,24 +109,24 @@
 				<div class="col-sm-3">
 					<div class="form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
 						<label for="telefone"><span style="color: red;">* </span>Telefone</label>
-						<input id="telefone" th:field="*{telefone}" type="text" class="form-control" placeholder="XXXXX-XXXX"/>
+						<input id="telefone" name="telefone" th:field="*{telefone}" type="text" class="form-control" placeholder="XXXXX-XXXX"/>
 					</div>
 				</div>
 				
 				<!-- Cidade -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.cidade')} ? has-error">
-						<label for="cidade"><span style="color: red;">* </span>Cidade</label>
-						<input id="cidade" th:field="*{endereco.cidade}" type="text" class="form-control"/>
+					<div class="form-group">
+						<label for="cidade">Cidade</label>
+						<input id="cidade" name="cidade" th:value="${endereco.cidade}" type="text" class="form-control"/>
 					</div>
 				</div>
 				
 				<!-- Estado -->
-				<div class="col-sm-1">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.estado')} ? has-error">
-						<label for="input-produto-estoque"><span style="color: red;">* </span>Estado</label>
-						<select class="form-control" id="estado" name="estado" th:field="*{endereco.estado}" >
-							<option value="" label="--"></option>
+				<div class="col-sm-2">
+					<div class="form-group">
+						<label for="input-produto-estoque">Estado</label>
+						<select class="form-control" id="estado" name="estado" th:value="${endereco.estado}">
+							<option value="" label="-- Selecione --"></option>
 							<option th:each="enums : ${enumEstado}" th:value="${enums}" th:text="${enums.descricao}"></option>
                     	</select>
 					</div>

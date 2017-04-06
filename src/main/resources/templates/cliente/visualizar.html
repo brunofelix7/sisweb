@@ -5,7 +5,7 @@
 	layout:decorator="layout/LayoutPadrao">
 	
 <head>
-	<title>CRUD Example</title>
+	<title>MVarandas</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 		<div class="table-responsive">
 		
 			<div>
-				<h2 th:text="${user.name}"></h2>
+				<h2 th:text="${cliente.nome}"></h2>
 				<hr/>
 			</div>
 		
@@ -33,15 +33,15 @@
 				<thead class="aw-table-header-solid">
 					<tr>
 						<td style="padding-bottom: 10px;"><b>Código: </b></td>
-						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${user.id}"></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.id}"></td>
 					</tr>
 					<tr>
 						<td style="padding-bottom: 10px;"><b>CPF: </b></td>
-						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${user.age}"></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.cpf}"></td>
 					</tr>
 					<tr>
 						<td style="padding-bottom: 10px;"><b>Email: </b></td>
-						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${user.salary}"></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.email}"></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,9 +50,9 @@
 			</table>
 			
 			<div class="form-group">
-				<a th:href="@{/users/atualizar/{codigo}(codigo=${user.id})}" class="btn  btn-primary" type="submit">Editar</a>
-				<a th:href="@{/users/excluir/{codigo}(codigo=${user.id})}" class="btn  btn-primary" type="submit">Excluir</a>
-				<a th:href="@{/users}" class="btn  btn-default">Voltar</a>
+				<a th:href="@{/clientes/atualizar/{codigo}(codigo=${cliente.id})}" class="btn  btn-primary" type="submit">Editar</a>
+				<a th:href="@{/clientes/excluir/{codigo}(codigo=${cliente.id})}" class="btn  btn-primary" type="submit">Excluir</a>
+				<a th:href="@{/clientes}" class="btn  btn-default">Voltar</a>
 			</div>
 		</div>
 	</div>

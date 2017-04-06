@@ -126,11 +126,11 @@ public class ClienteController {
 	}	
 	
 	/**
-	 * PESQUISAR UM CLIENTE PELO NOME
+	 * PESQUISAR UM CLIENTE PELO NOME OU TELEFONE
 	 */
 	@RequestMapping(value = Routes.CLIENTES_PESQUISAR, method = RequestMethod.GET)
-	public String pesquisar(@ModelAttribute(value = "nome") String nome, @ModelAttribute(value = "cpf") String cpf, ModelMap modelMap){
-		List<Cliente> clientes = clienteService.findByNomeOrCpf(nome, cpf);
+	public String pesquisar(@ModelAttribute(value = "nome") String nome, @ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
+		List<Cliente> clientes = clienteService.findByNomeOrTelefone(nome, telefone);
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;
 	}

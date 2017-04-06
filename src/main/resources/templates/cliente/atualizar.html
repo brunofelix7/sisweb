@@ -5,7 +5,7 @@
 	layout:decorator="layout/LayoutPadrao">
 	
 <head>
-	<title>CRUD Example</title>
+	<title>MVarandas</title>
 </head>
 
 <body>
@@ -14,14 +14,14 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<h1>
-				Atualizar usuário
+				Atualização de dados
 			</h1>
 		</div>
 	</div>
 
 	<div class="container-fluid">
 	
-		<form method="POST" th:action="@{/users/alterar}" th:object="${user}" class="form-vertical  js-form-loading">
+		<form method="POST" th:action="@{/clientes/alterar}" th:object="${cliente}" class="form-vertical  js-form-loading">
 			
 			<!-- MENSAGEM DE SUCESSO -->
     		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
@@ -40,36 +40,126 @@
 			
 			<input type="hidden" th:field="*{id}"/>
 			
+			<!-- NOME | RUA | NÚMERO -->
 			<div class="row">
+				<!-- Nome -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
-						<label for="name">Nome</label>
-						<input id="name" th:field="*{name}" type="text" class="form-control" placeholder="Nome"/>
+					<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+						<label for="nome"><span style="color: red;">* </span>Nome</label>
+						<input id="nome" th:field="*{nome}" type="text" class="form-control" placeholder="Nome"/>
+					</div>
+				</div>
+				
+				<!-- Rua -->
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="rua">>Rua</label>
+						<input id="rua" name="rua" th:value="${cliente.endereco.rua}" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<!-- Número -->
+				<div class="col-sm-2">
+					<div class="form-group">
+						<label for="numero">Número</label>
+						<input id="numero" name="numero" th:value="${cliente.endereco.numero}" type="text" class="form-control"/>
 					</div>
 				</div>
 			</div>
 			
+			<!-- EMAIL | CEP -->
 			<div class="row">
+				<!-- Email -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('age')} ? has-error">
-						<label for="age">Idade</label>
-						<input id="age" th:field="*{age}" type="text" class="form-control" placeholder="Idade"/>
+					<div class="form-group">
+						<label for="email"><span style="color: red;">* </span>E-mail</label>
+						<input id="email" th:field="*{email}" type="text" class="form-control" placeholder="example@gmail.com"/>
+					</div>
+				</div>
+				
+				<!-- CEP -->
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="cep">CEP</label>
+						<input id="cep" name="cep" th:value="${cliente.endereco.cep}" type="text" class="form-control"/>
 					</div>
 				</div>
 			</div>
-	
+			
+			<!-- CPF | BAIRRO -->
 			<div class="row">
+				<!-- CPF -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('salary')} ? has-error">
-						<label for="salary">Salário</label>
-						<input id="salary" th:field="*{salary}" type="text" class="form-control" placeholder="1500.00"/>
+					<div class="form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
+						<label for="cpf"><span style="color: red;">* </span>CPF</label>
+						<input id="cpf" th:field="*{cpf}" type="text" class="form-control" placeholder="XXX.XXX.XXX-XX"/>
 					</div>
 				</div>
+				
+				<!-- Bairro -->
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="bairro">Bairro</label>
+						<input id="bairro" name="bairro" th:value="${cliente.endereco.bairro}" type="text" class="form-control"/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- TELEFONE | CIDADE | ESTADO -->
+			<div class="row">
+				<!-- Telefone -->
+				<div class="col-sm-3">
+					<div class="form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
+						<label for="telefone"><span style="color: red;">* </span>Telefone</label>
+						<input id="telefone" name="telefone" th:field="*{telefone}" type="text" class="form-control" placeholder="XXXXX-XXXX"/>
+					</div>
+				</div>
+				
+				<!-- Cidade -->
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="cidade">Cidade</label>
+						<input id="cidade" name="cidade" th:value="${cliente.endereco.cidade}" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<!-- Estado -->
+				<div class="col-sm-2">
+					<div class="form-group">
+						<label for="input-produto-estoque">Estado</label>
+						<select class="form-control" id="estado" name="estado" th:value="${cliente.endereco.estado}">
+							<option value="" label="--"></option>
+							<option th:each="enums : ${enumEstado}" th:value="${enums}" th:text="${enums.descricao}"></option>
+                    	</select>
+					</div>
+				</div>
+			</div>
+			
+			<!-- SEXO | DATA DE NASCIMENTO -->
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="form-group" th:classappend="${#fields.hasErrors('sexo')} ? has-error">
+						<label for="input-produto-estoque"><span style="color: red;">* </span>Sexo</label>
+						<select class="form-control" id="sexo" name="sexo" th:field="*{sexo}" >
+							<option value="" label="-- Selecione --"></option>
+							<option th:each="enums : ${enumSexo}" th:value="${enums}" th:text="${enums.descricao}"></option>
+                    	</select>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="form-group" th:classappend="${#fields.hasErrors('data_nascimento')} ? has-error">
+						<label for="data_nascimento">Data de Nascimento</label>
+						<input id="data_nascimento" th:field="*{data_nascimento}" type="text" class="form-control" placeholder="06/11/1989"/>
+					</div>
+				</div>	
 			</div>
 			
 			<div class="form-group">
 				<button class="btn  btn-primary" type="submit">Salvar</button>
-				<a th:href="@{/users}" class="btn  btn-default">Voltar</a>
+				<a th:href="@{/clientes}" class="btn  btn-default">Voltar</a>
 			</div>
 	
 		</form>

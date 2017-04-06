@@ -1,16 +1,13 @@
 package br.com.mvarandas.dao;
 
 import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
 import br.com.mvarandas.entity.Cliente;
 
 public interface ClienteDAO {
 
 	Cliente findById(Long id);
 	
-	List<Cliente> findByNomeOrCpf(String nome, String cpf);
+	List<Cliente> findByNomeOrTelefone(String nome, String telefone);
 
     void saveCliente(Cliente cliente);
  

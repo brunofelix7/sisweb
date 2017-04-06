@@ -17,7 +17,7 @@ import br.com.mvarandas.model.EnumEstado;
  * Classe que representa minha entidade endereco no banco de dados
  * @author Bruno Felix
  */
-@Entity(name = "endereco")
+@Entity
 public class Endereco {
 	
 	@Id

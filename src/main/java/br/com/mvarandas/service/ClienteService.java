@@ -3,13 +3,11 @@ package br.com.mvarandas.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import br.com.mvarandas.dao.ClienteDAO;
 import br.com.mvarandas.entity.Cliente;
 import br.com.mvarandas.repository.ClienteRepository;
 
 @Service
-@Transactional
 public class ClienteService implements ClienteDAO{
 	
 	@Autowired
@@ -22,8 +20,8 @@ public class ClienteService implements ClienteDAO{
 	}
 
 	@Override
-	public List<Cliente> findByNomeOrCpf(String nome, String cpf) {
-		List<Cliente> clientes = clienteRepository.findByNomeOrCpf(nome, cpf);
+	public List<Cliente> findByNomeOrTelefone(String nome, String telefone) {
+		List<Cliente> clientes = clienteRepository.findByNomeOrTelefone(nome, telefone);
 		return clientes;
 	}
 
