@@ -63,7 +63,7 @@ public abstract class Pessoa {
 	private Date data_nascimento;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	public Endereco endereco;
+	private Endereco endereco;
 
 	public Long getId() {
 		return id;

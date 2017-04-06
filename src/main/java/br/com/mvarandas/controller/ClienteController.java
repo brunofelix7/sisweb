@@ -41,8 +41,8 @@ public class ClienteController {
 		ModelAndView mv = new ModelAndView(Views.NOVO);
 		Cliente cliente = new Cliente();
 		Endereco endereco = new Endereco();
-		mv.addObject("cliente", cliente);
 		mv.addObject("endereco", endereco);
+		mv.addObject("cliente", cliente);
 		return mv;
 	}
 	
@@ -52,6 +52,7 @@ public class ClienteController {
 	@RequestMapping(value = Routes.CLIENTES_SALVAR, method = RequestMethod.POST)
 	public ModelAndView salvar(@ModelAttribute(value = "cliente") @Validated Cliente cliente, Errors errors, @ModelAttribute(value = "endereco") @Validated Endereco endereco, Errors errorsAddress, ModelMap modelMap){
 		ModelAndView mv = new ModelAndView(Views.NOVO);
+		modelMap.addAttribute("endereco", endereco);
 		modelMap.addAttribute("cliente", cliente);
 		if(errors.hasErrors() || errorsAddress.hasErrors()){
 			System.out.println(errors.getFieldErrors());

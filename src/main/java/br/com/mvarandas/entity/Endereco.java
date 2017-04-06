@@ -22,31 +22,18 @@ public class Endereco {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Long id;
 	
-	@NotEmpty(message = "Campo Rua é obrigatório")
-	@Column(name = "rua", nullable = false)
 	private String rua;
 	
-	@NotEmpty(message = "Campo Número é obrigatório")
-	@Column(name = "numero", nullable = false)
 	private String numero;
-	
-	@NotEmpty(message = "Campo CEP é obrigatório")
-	@Column(name = "cep", nullable = false)
+
 	private String cep;
 	
-	@NotEmpty(message = "Campo Bairro é obrigatório")
-	@Column(name = "bairro", nullable = false)
 	private String bairro;
 	
-	@NotEmpty(message = "Campo Cidade é obrigatório")
-	@Column(name = "cidade", nullable = false)
 	private String cidade;
-	
-	@NotNull(message = "Selecione uma opção no campo Estado")
-	@Column(name = "estado", nullable = false)
+
 	@Enumerated(EnumType.STRING)
 	private EnumEstado estado;
 

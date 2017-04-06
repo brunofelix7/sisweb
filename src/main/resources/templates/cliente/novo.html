@@ -50,20 +50,19 @@
 				
 				<!-- Rua -->
 				<div class="col-sm-3">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.rua')} ? has-error">
+					<div class="form-group">
 						<label for="rua"><span style="color: red;">* </span>Rua</label>
-						<input id="rua" th:field="*{endereco.rua}" type="text" class="form-control"/>
+						<input id="rua" th:value="${endereco.rua}" type="text" class="form-control"/>
 					</div>
 				</div>
 				
 				<!-- Número -->
 				<div class="col-sm-1">
-					<div class="form-group" th:classappend="${#fields.hasErrors('endereco.numero')} ? has-error">
+					<div class="form-group">
 						<label for="numero"><span style="color: red;">* </span>Número</label>
-						<input id="numero" th:field="*{endereco.numero}" type="text" class="form-control"/>
+						<input id="numero" th:value="${endereco.numero}" type="text" class="form-control"/>
 					</div>
 				</div>
-				
 			</div>
 			
 			<!-- EMAIL | CEP -->
