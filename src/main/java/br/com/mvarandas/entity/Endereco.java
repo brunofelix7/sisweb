@@ -2,9 +2,12 @@ package br.com.mvarandas.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -28,7 +31,7 @@ public class Endereco {
 	
 	@NotEmpty(message = "Campo Número é obrigatório")
 	@Column(name = "numero", nullable = false)
-	private int numero;
+	private String numero;
 	
 	@NotEmpty(message = "Campo CEP é obrigatório")
 	@Column(name = "cep", nullable = false)
@@ -42,8 +45,9 @@ public class Endereco {
 	@Column(name = "cidade", nullable = false)
 	private String cidade;
 	
-	@NotEmpty(message = "Campo Estado é obrigatório")
+	@NotNull(message = "Selecione uma opção no campo Estado")
 	@Column(name = "estado", nullable = false)
+	@Enumerated(EnumType.STRING)
 	private EnumEstado estado;
 
 	public Long getId() {
@@ -62,11 +66,11 @@ public class Endereco {
 		this.rua = rua;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -101,5 +105,6 @@ public class Endereco {
 	public void setEstado(EnumEstado estado) {
 		this.estado = estado;
 	}
+
 
 }

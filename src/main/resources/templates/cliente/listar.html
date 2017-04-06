@@ -22,7 +22,7 @@
 			
 				<div class="col-xs-2">
 					<div class="aw-page-header-controls">
-						<a class="btn btn-primary" th:href="@{/users/novo}">
+						<a class="btn btn-primary" th:href="@{/clientes/novo}">
 							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo</span>
 						</a>
 					</div>
@@ -58,36 +58,39 @@
 					<tr>
 						<th>#</th>
 						<th>Nome</th>
-						<th>Idade</th>
-						<th>Salário</th>
-						<th>Ações</th>
+						<th>Telefone</th>
+						<th>Sexo</th>
+						<th>E-mail</th>
+						<th>CPF</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr id="count" th:each="user : ${users}">
-						<td th:text="${user.id}"></td>
-						<td th:text="${user.name}"></td>
-						<td th:text="${user.age}" class="table-pesq-produto-col-preco"></td>
-						<td th:text="${user.salary}" class="table-pesq-produto-col-estoque"></td>
+					<tr id="count" th:each="cliente : ${clientes}">
+						<td th:text="${cliente.id}"></td>
+						<td th:text="${cliente.nome}"></td>
+						<td th:text="${cliente.telefone}"></td>
+						<td th:text="${cliente.sexo}"></td>
+						<td th:text="${cliente.email}"></td>
+						<td th:text="${cliente.cpf}"></td>
 						<td class="table-pesq-produto-col-acoes">
 						
 							<div class="btn-group">
-								<a th:href="@{/users/visualizar/{id}(id=${user.id})}" class="btn  btn-default btn-xs">
+								<a th:href="@{/clientes/visualizar/{id}(id=${cliente.id})}" class="btn  btn-default btn-xs">
 									<i class="fa  fa-fw  fa-eye"></i>
 								</a>
 							
-								<a th:href="@{/users/atualizar/{id}(id=${user.id})}" class="btn  btn-default btn-xs">
+								<a th:href="@{/clientes/atualizar/{id}(id=${cliente.id})}" class="btn  btn-default btn-xs">
 									<i class="fa  fa-pencil"></i>
 								</a>
 								
-								<a th:href="@{/users/excluir/{id}(id=${user.id})}" class="btn  btn-default btn-xs">
+								<a th:href="@{/clientes/excluir/{id}(id=${cliente.id})}" class="btn  btn-default btn-xs">
 									<i class="fa  fa-trash"></i>
 								</a>
 							</div>
 						
 						</td>
 					</tr>
-					<tr id="not-count" th:if="${users.empty}">
+					<tr id="not-count" th:if="${clientes.empty}">
 						<td colspan="6">Nenhum usuário encontrado.</td>
 					</tr>
 				</tbody>
@@ -112,7 +115,7 @@
 				<span class="aw-pagination-info">
 					<script>
 						var row = document.getElementById("tabela-user").rows.length;
-						document.write("<b>" + (row - 1) + "</b>" + " Usuários cadastrados");
+						document.write("<b>" + (row - 1) + "</b>" + " Clientes cadastrados");
 					</script>
 				</span>
 			</div>

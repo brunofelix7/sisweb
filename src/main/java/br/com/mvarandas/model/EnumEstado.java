@@ -2,7 +2,6 @@ package br.com.mvarandas.model;
 
 public enum EnumEstado {
 
-	EX(null),
     AC("AC"), // Acre
     AL("AL"), // Alagoas
     AP("AP"), // Amapá

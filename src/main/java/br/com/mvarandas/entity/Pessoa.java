@@ -1,7 +1,7 @@
 package br.com.mvarandas.entity;
 
 import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,12 +14,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import br.com.mvarandas.model.EnumSexo;
 
 /**
@@ -39,32 +38,32 @@ public abstract class Pessoa {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name = "telefone")
-	private int telefone;
+	@NotEmpty(message = "Campo Telefone é obrigatório")
+	@Column(name = "telefone", nullable = false)
+	private String telefone;
 
-	@NotEmpty(message = "Campo Sexo é obrigatório")
+	@NotNull(message = "Selecione uma opção no campo Sexo")
 	@Column(name = "sexo", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private EnumSexo sexo;
 	
 	@NotEmpty(message = "Campo E-mail é obrigatório")
-	@Column(name = "email", nullable = false)
+	@Column(name = "email", nullable = false, unique = true)
 	@Email(message = "E-mail inválido")
 	private String email;
 	
 	@NotEmpty(message = "Campo Cpf é obrigatório")
-	@Column(name ="cpf", nullable = false)
+	@Column(name ="cpf", nullable = false, unique = true)
 	@CPF(message = "CPF inválido")
 	private String cpf;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@Column(name ="data_nascimento")
+	@Column(name ="data_nascimento", nullable = true)
 	private Date data_nascimento;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	public Endereco endereco;
-	
 
 	public Long getId() {
 		return id;
@@ -82,11 +81,11 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -128,6 +127,6 @@ public abstract class Pessoa {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}	
+	}
 	
 }
