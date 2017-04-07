@@ -5,12 +5,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.mvarandas.model.Routes;
 import br.com.mvarandas.model.Views;
 
 @Controller
 public class LoginController {
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = Routes.LOGIN)
 	public String autenticar(@AuthenticationPrincipal User user){
 		if (user != null) {
 			return "redirect:/clientes";

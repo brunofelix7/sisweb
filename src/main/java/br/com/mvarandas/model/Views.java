@@ -1,9 +1,8 @@
 package br.com.mvarandas.model;
 
 /**
- * Classe que contém o caminha das views
+ * Classe que contém o caminho das views
  * @author Bruno Felix
- *
  */
 public class Views {
 	
@@ -14,6 +13,6 @@ public class Views {
 	public static final String LISTAR 		= "/cliente/listar";
 	
 	//	Login
-	public static final String LOGIN_VIEW = "/login/login";
+	public static final String LOGIN_VIEW 	= "/login/login";
 
 }

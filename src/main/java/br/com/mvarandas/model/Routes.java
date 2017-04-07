@@ -6,6 +6,7 @@ package br.com.mvarandas.model;
  */
 public class Routes {
 	
+	//	Rotas de cliente
 	public static final String CLIENTES 			= "/clientes";
 	public static final String CLIENTES_NOVO 		= "/novo";
 	public static final String CLIENTES_SALVAR 		= "/salvar";
@@ -14,5 +15,9 @@ public class Routes {
 	public static final String CLIENTES_EXCLUIR 	= "/excluir/{id}";
 	public static final String CLIENTES_VISUALIZAR 	= "/visualizar/{id}";
 	public static final String CLIENTES_PESQUISAR 	= "/pesquisar";
+	
+	//	Rotas de login
+	public static final String LOGIN 	= "/login";
+	public static final String LOGOUT 	= "/logout";
 	
 }

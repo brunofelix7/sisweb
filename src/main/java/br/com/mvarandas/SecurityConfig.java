@@ -6,7 +6,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import br.com.mvarandas.model.Routes;
 
+/**
+ * Classe que configura e realiza a segurança do sistema
+ * @author Bruno Felix
+ */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -33,12 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.anyRequest()
 			.authenticated()
-			.and().formLogin().loginPage("/login")
+			.and().formLogin().loginPage(Routes.LOGIN)
 			.permitAll()
 			.and().logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+			.logoutRequestMatcher(new AntPathRequestMatcher(Routes.LOGOUT));
 	}
-	
-	
 	
 }
