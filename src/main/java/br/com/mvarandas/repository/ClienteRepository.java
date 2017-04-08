@@ -6,7 +6,13 @@ import br.com.mvarandas.entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
-	List<Cliente> findByNomeOrTelefone(String nome, String telefone);
+	//	@Query("select c from Cliente c where c.nome like %:nome%")
+	//	@Param("nome")
+	List<Cliente> findByNomeStartingWith(String nome);
+	
+	//	@Query("select c from Cliente c where c.telefone like %:telefone%")
+	//	@Param("telefone")
+	List<Cliente> findByTelefoneStartingWith(String telefone);
 	
 	//	Filtro para Sexo, Idade ou Cidade
 	

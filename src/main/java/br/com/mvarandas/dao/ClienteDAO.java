@@ -7,7 +7,9 @@ public interface ClienteDAO {
 
 	Cliente findById(Long id);
 	
-	List<Cliente> findByNomeOrTelefone(String nome, String telefone);
+	List<Cliente> findByNomeStartingWith(String nome);
+	
+	List<Cliente> findByTelefoneStartingWith(String telefone);
 
     void saveCliente(Cliente cliente);
  

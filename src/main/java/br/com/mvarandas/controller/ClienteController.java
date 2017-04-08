@@ -126,11 +126,21 @@ public class ClienteController {
 	}	
 	
 	/**
-	 * PESQUISAR UM CLIENTE PELO NOME OU TELEFONE
+	 * PESQUISAR UM CLIENTE PELO NOME
 	 */
-	@RequestMapping(value = Routes.CLIENTES_PESQUISAR, method = RequestMethod.GET)
-	public String pesquisar(@ModelAttribute(value = "nome") String nome, @ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
-		List<Cliente> clientes = clienteService.findByNomeOrTelefone(nome, telefone);
+	@RequestMapping(value = Routes.CLIENTES_PESQUISAR_NOME, method = RequestMethod.GET)
+	public String buscarNome(@ModelAttribute(value = "nome") String nome, ModelMap modelMap){
+		List<Cliente> clientes = clienteService.findByNomeStartingWith(nome);
+		modelMap.addAttribute("clientes", clientes);
+		return Views.LISTAR;
+	}
+	
+	/**
+	 * PESQUISAR UM CLIENTE PELO TELEFONE
+	 */
+	@RequestMapping(value = Routes.CLIENTES_PESQUISAR_TELEFONE, method = RequestMethod.GET)
+	public String buscarTelefone(@ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
+		List<Cliente> clientes = clienteService.findByTelefoneStartingWith(telefone);
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;
 	}
