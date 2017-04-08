@@ -69,7 +69,7 @@
 			<div class="row">
 				<!-- Email -->
 				<div class="col-sm-3">
-					<div class="form-group">
+					<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
 						<label for="email"><span style="color: red;">* </span>E-mail</label>
 						<input id="email" th:field="*{email}" type="text" class="form-control" placeholder="example@gmail.com"/>
 					</div>

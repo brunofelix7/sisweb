@@ -114,7 +114,7 @@ public class ClienteController {
 		Long count = clienteService.count();
 		modelMap.addAttribute("clientes", clientes);
 		modelMap.addAttribute("count", count);
-		modelMap.addAttribute("countMessage", " Clientes cadastrados");
+		modelMap.addAttribute("countMessage", "Clientes cadastrados: ");
 		return Views.LISTAR;
 	}
 	
