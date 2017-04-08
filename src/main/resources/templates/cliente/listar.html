@@ -111,25 +111,10 @@
 		</div>
 			
 		<div class="row">
-			<div class="col-xs-12  col-md-8  aw-text-xs-center  aw-text-md-left">
-				<nav>
-					<ul class="pagination  pagination-sm">
-						<li><a href="#"><i class="fa  fa-angle-double-left"></i></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#"><i class="fa  fa-angle-double-right"></i></a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-xs-12  col-md-4  aw-text-xs-center  aw-text-md-right">
+			<div class="col-xs-12  col-md-12  aw-text-xs-center  aw-text-md-right">
 				<span class="aw-pagination-info">
-					<script>
-						var row = document.getElementById("tabela-user").rows.length;
-						document.write("<b>" + (row - 1) + "</b>" + " Clientes cadastrados");
-					</script>
+					<b><label th:text="${count}"></label></b>
+					<i style="font-style: normal;" th:text="${countMessage}"></i>
 				</span>
 			</div>
 		</div>

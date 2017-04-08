@@ -111,7 +111,10 @@ public class ClienteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar(ModelMap modelMap) {
 		List<Cliente> clientes = clienteService.findAllClientes();
+		Long count = clienteService.count();
 		modelMap.addAttribute("clientes", clientes);
+		modelMap.addAttribute("count", count);
+		modelMap.addAttribute("countMessage", " Clientes cadastrados");
 		return Views.LISTAR;
 	}
 	
@@ -160,5 +163,8 @@ public class ClienteController {
 	public List<EnumEstado> enumEstado(){
 		return Arrays.asList(EnumEstado.values());
 	}
+	
+	
+	
 
 }

@@ -36,12 +36,48 @@
 						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.id}"></td>
 					</tr>
 					<tr>
+						<td style="padding-bottom: 10px;"><b>Email: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.email}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Telefone: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.telefone}"></td>
+					</tr>
+					<tr>
 						<td style="padding-bottom: 10px;"><b>CPF: </b></td>
 						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.cpf}"></td>
 					</tr>
 					<tr>
-						<td style="padding-bottom: 10px;"><b>Email: </b></td>
-						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.email}"></td>
+						<td style="padding-bottom: 10px;"><b>Sexo: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.sexo}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Data de nascimento: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.data_nascimento}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Rua: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.rua}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Número: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.numero}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>CEP: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.cep}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Bairro: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.bairro}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Cidade: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.cidade}"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 10px;"><b>Estado: </b></td>
+						<td style="padding-left: 10px; padding-bottom: 10px;" th:text="${cliente.endereco.estado}"></td>
 					</tr>
 				</thead>
 				<tbody>

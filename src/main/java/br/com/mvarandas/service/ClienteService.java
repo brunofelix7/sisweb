@@ -30,6 +30,11 @@ public class ClienteService implements ClienteDAO{
 		List<Cliente> clientes = clienteRepository.findByTelefoneStartingWith(telefone);
 		return clientes;
 	}
+	
+	@Override
+	public Long count(){
+		return clienteRepository.count();
+	}
 
 	@Override
 	public void saveCliente(Cliente cliente) {
