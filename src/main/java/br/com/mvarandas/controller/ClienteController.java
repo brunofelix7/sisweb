@@ -132,7 +132,7 @@ public class ClienteController {
 	 * PESQUISAR UM CLIENTE PELO NOME
 	 */
 	@RequestMapping(value = Routes.CLIENTES_PESQUISAR_NOME, method = RequestMethod.GET)
-	public String buscarNome(@ModelAttribute(value = "nome") String nome, ModelMap modelMap){
+	public String pesquisarNome(@ModelAttribute(value = "nome") String nome, ModelMap modelMap){
 		List<Cliente> clientes = clienteService.findByNomeStartingWith(nome);
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;
@@ -142,8 +142,28 @@ public class ClienteController {
 	 * PESQUISAR UM CLIENTE PELO TELEFONE
 	 */
 	@RequestMapping(value = Routes.CLIENTES_PESQUISAR_TELEFONE, method = RequestMethod.GET)
-	public String buscarTelefone(@ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
+	public String pesquisarTelefone(@ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
 		List<Cliente> clientes = clienteService.findByTelefoneStartingWith(telefone);
+		modelMap.addAttribute("clientes", clientes);
+		return Views.LISTAR;
+	}
+	
+	/**
+	 * FILTRAR POR SEXO
+	 */
+	@RequestMapping(value = Routes.CLIENTES_FILTRAR_SEXO, method = RequestMethod.GET)
+	public String filtrarSexo(@ModelAttribute(value = "sexo") String sexo, ModelMap modelMap){
+		List<Cliente> clientes = clienteService.findBySexo(sexo);
+		modelMap.addAttribute("clientes", clientes);
+		return Views.LISTAR;
+	}
+	
+	/**
+	 * FILTRAR POR CIDADE
+	 */
+	@RequestMapping(value = Routes.CLIENTES_FILTRAR_CIDADE, method = RequestMethod.GET)
+	public String filtrarCidade(@ModelAttribute(value = "cidade") String cidade, ModelMap modelMap){
+		List<Cliente> clientes = clienteService.findByEnderecoCidade(cidade);
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;
 	}

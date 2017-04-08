@@ -11,6 +11,10 @@ public interface ClienteDAO {
 	
 	List<Cliente> findByTelefoneStartingWith(String telefone);
 	
+	List<Cliente> findBySexo(String sexo);
+	
+	List<Cliente> findByEnderecoCidade(String cidade);
+	
 	Long count();
 
     void saveCliente(Cliente cliente);

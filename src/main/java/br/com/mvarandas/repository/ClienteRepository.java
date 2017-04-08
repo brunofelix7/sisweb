@@ -9,7 +9,9 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	List<Cliente> findByNomeStartingWith(String nome);
 	
 	List<Cliente> findByTelefoneStartingWith(String telefone);
-
-	//	Filtro para Sexo, Idade ou Cidade
+	
+	List<Cliente> findBySexo(String sexo);
+	
+	List<Cliente> findByEnderecoCidade(String cidade);
 	
 }

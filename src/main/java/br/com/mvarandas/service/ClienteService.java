@@ -32,6 +32,18 @@ public class ClienteService implements ClienteDAO{
 	}
 	
 	@Override
+	public List<Cliente> findBySexo(String sexo) {
+		List<Cliente> clientes = clienteRepository.findBySexo(sexo);
+		return clientes;
+	}
+
+	@Override
+	public List<Cliente> findByEnderecoCidade(String cidade) {
+		List<Cliente> clientes = clienteRepository.findByEnderecoCidade(cidade);
+		return clientes;
+	}
+	
+	@Override
 	public Long count(){
 		return clienteRepository.count();
 	}

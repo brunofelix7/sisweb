@@ -19,6 +19,8 @@ public class Routes {
 	public static final String CLIENTES_VISUALIZAR 			= "/visualizar/{id}";
 	public static final String CLIENTES_PESQUISAR_NOME 		= "/pesquisar/nome";
 	public static final String CLIENTES_PESQUISAR_TELEFONE 	= "/pesquisar/telefone";
+	public static final String CLIENTES_FILTRAR_SEXO 		= "/filtrar/sexo";
+	public static final String CLIENTES_FILTRAR_CIDADE		= "/filtrar/cidade";
 	
 	//	Rotas de login
 	public static final String LOGIN 	= "/login";
