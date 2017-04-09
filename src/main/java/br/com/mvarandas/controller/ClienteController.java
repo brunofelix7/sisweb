@@ -1,7 +1,10 @@
 package br.com.mvarandas.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,7 @@ import br.com.mvarandas.entity.Cliente;
 import br.com.mvarandas.entity.Endereco;
 import br.com.mvarandas.model.EnumEstado;
 import br.com.mvarandas.model.EnumSexo;
+import br.com.mvarandas.model.GetAge;
 import br.com.mvarandas.model.Routes;
 import br.com.mvarandas.model.Views;
 import br.com.mvarandas.service.ClienteService;
@@ -133,6 +137,15 @@ public class ClienteController {
 	public String listar(ModelMap modelMap) {
 		List<Cliente> clientes = clienteService.findAllClientes();
 		Long count = clienteService.count();
+		
+		//	Converte a data de nascimento em idade
+		Set<Integer> age = new HashSet<>(); 
+		for(Cliente c: clientes){
+			int idade = GetAge.getAge(c.getData_nascimento());
+			age.add(idade);
+		}
+		
+		modelMap.addAttribute("age", age);
 		modelMap.addAttribute("clientes", clientes);
 		modelMap.addAttribute("count", count);
 		modelMap.addAttribute("countMessage", "Clientes cadastrados: ");
@@ -156,7 +169,7 @@ public class ClienteController {
 	public String pesquisarNome(@ModelAttribute(value = "nome") String nome, ModelMap modelMap){
 		List<Cliente> clientes = clienteService.findByNomeStartingWith(nome);
 		modelMap.addAttribute("clientes", clientes);
-		return Views.LISTAR;
+		return Views.LISTAR_ENDERECO;
 	}
 	
 	/**
@@ -164,9 +177,9 @@ public class ClienteController {
 	 */
 	@RequestMapping(value = Routes.CLIENTES_PESQUISAR_TELEFONE, method = RequestMethod.GET)
 	public String pesquisarTelefone(@ModelAttribute(value = "telefone") String telefone, ModelMap modelMap){
-		List<Cliente> clientes = clienteService.findByTelefoneStartingWith(telefone);
+		List<Cliente> clientes = clienteService.findByTelefoneContaining(telefone);
 		modelMap.addAttribute("clientes", clientes);
-		return Views.LISTAR;
+		return Views.LISTAR_ENDERECO;
 	}
 	
 	/**
@@ -188,6 +201,30 @@ public class ClienteController {
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;
 	}
+	
+	/**
+	 * FILTRAR POR IDADE
+	 */
+	@RequestMapping(value = Routes.CLIENTES_FILTRAR_IDADE, method = RequestMethod.GET)
+	public String filtrarIdade(@ModelAttribute(value = "idade") String idade, ModelMap modelMap){
+		
+		//	Lista de todos os clientes
+		List<Cliente> allClientes = clienteService.findAllClientes();
+		
+		//	Lista que contém apenas os clientes com a idade filtrada
+		List<Cliente> clientes = new ArrayList<>();
+		
+		for(Cliente c: allClientes){
+			int i = GetAge.getAge(c.getData_nascimento());
+			//	Add clientes que possuem tal idade, e depois manda essa lista
+			if(i == Integer.parseInt(idade)){
+				clientes.add(c);
+			}
+		}
+				
+		modelMap.addAttribute("clientes", clientes);
+		return Views.LISTAR;
+	}
 
 	/**
 	 * RETORNA TODOS OS ENUNS EM UM ARRAY DINAMICAMENTE 
@@ -204,8 +241,5 @@ public class ClienteController {
 	public List<EnumEstado> enumEstado(){
 		return Arrays.asList(EnumEstado.values());
 	}
-	
-	
-	
 
 }

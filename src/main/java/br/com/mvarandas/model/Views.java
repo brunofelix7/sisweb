@@ -7,12 +7,16 @@ package br.com.mvarandas.model;
 public class Views {
 	
 	//	Cliente
-	public static final String NOVO 		= "/production/novo";
-	public static final String ATUALIZAR 	= "/production/atualizar";
-	public static final String VISUALIZAR 	= "/production/visualizar";
-	public static final String LISTAR 		= "/production/listar";
+	public static final String NOVO 		   = "/cliente/novo";
+	public static final String ATUALIZAR 	   = "/cliente/atualizar";
+	public static final String VISUALIZAR 	   = "/cliente/visualizar";
+	public static final String LISTAR 		   = "/cliente/listar";
+	public static final String LISTAR_ENDERECO = "/cliente/listar_endereco";
 	
 	//	Login
-	public static final String LOGIN_VIEW 	= "/production/login";
+	public static final String LOGIN_VIEW = "/login/login";
+	
+	//	Error
+	public static final String ERROR_404 = "error/404";
 
 }

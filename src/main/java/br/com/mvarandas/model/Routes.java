@@ -21,9 +21,13 @@ public class Routes {
 	public static final String CLIENTES_PESQUISAR_TELEFONE 	= "/pesquisar/telefone";
 	public static final String CLIENTES_FILTRAR_SEXO 		= "/filtrar/sexo";
 	public static final String CLIENTES_FILTRAR_CIDADE		= "/filtrar/cidade";
+	public static final String CLIENTES_FILTRAR_IDADE		= "/filtrar/idade";
 	
 	//	Rotas de login
 	public static final String LOGIN 	= "/login";
 	public static final String LOGOUT 	= "/logout";
+	
+	//	Rotas de erro
+	public static final String ERROR_404 = "/error404";
 	
 }

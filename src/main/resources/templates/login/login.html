@@ -1,47 +1,108 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
-	layout:decorator="layout/LayoutSimples">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<th:block layout:fragment="conteudo">
-	<form th:action="@{/login}" method="POST">
-		<div class="aw-simple-panel">
-			<h1>CRUD Example</h1>
-			
-			<div class="aw-simple-panel__message">
-				Por favor, faça o login.
-			</div>
-			
-			<div class="aw-simple-panel__message  is-error" th:if="${#bools.isTrue(param.error)}">
-				<div class="alert alert-danger">
-  					<strong>Erro!</strong> O usuário e/ou senha não conferem.
-				</div>
-			</div>
-			
-			<div class="aw-simple-panel__message  is-error" th:if="${#bools.isTrue(param.success)}">
-				<div class="alert alert-success">
-  					<strong>Sucesso!</strong> Usuário deslogado.
-				</div>
-			</div>
-			
-			
-			<div class="aw-simple-panel__box">
-				<div class="form-group  has-feedback">
-					<input type="text" class="form-control  input-lg" placeholder="Usuário" autofocus="autofocus" name="username"/>
-					<span class="glyphicon  glyphicon-envelope  form-control-feedback"></span>
-				</div>
-				<div class="form-group  has-feedback">
-					<input type="password" class="form-control  input-lg" placeholder="Senha" name="password"/>
-					<span class="glyphicon  glyphicon-lock  form-control-feedback" ></span>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn  btn-primary  btn-lg  aw-btn-full-width">Entrar</button>
-				</div>
-			</div>
-			
-		</div>
-	</form>
-</th:block>
+    <title>MVarandas</title>
 
+    <!-- Bootstrap -->
+    <link th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!-- NProgress -->
+    <link th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet"/>
+    <!-- Animate.css -->
+    <link th:href="@{/vendors/animate.css/animate.min.css}" rel="stylesheet"/>
+    <!-- Custom Theme Style -->
+    <link th:href="@{/build/css/custom.min.css}" rel="stylesheet"/>
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form th:action="@{/login}" method="POST">
+              <h1>Login</h1>
+              
+              <div class="aw-simple-panel__message  is-error" th:if="${#bools.isTrue(param.error)}">
+  				<i style="font-style: normal; color: red;">O usuário/senha inválidos.</i>
+			  </div>
+			
+              <div>
+                <input type="text" class="form-control" name="username" placeholder="Usuário" />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" placeholder="Senha" />
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default">Entrar</button>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Novo no site?
+                  <a href="#signup" class="to_register"> Criar conta</a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-globe"></i> MVarandas</h1>
+                  <p>©2017 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Criar conta</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Nome" />
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Usuário" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Senha" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" th:href="@{/login}">Cadastrar</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Já é membro?
+                  <a href="#signin" class="to_register"> Login </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-globe"></i> MVarandas</h1>
+                  <p>©2017 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

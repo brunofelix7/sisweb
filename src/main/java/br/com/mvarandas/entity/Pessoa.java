@@ -48,12 +48,12 @@ public abstract class Pessoa {
 	private EnumSexo sexo;
 	
 	@NotEmpty(message = "Campo E-mail é obrigatório")
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "email", nullable = false)
 	@Email(message = "E-mail inválido")
 	private String email;
 	
 	@NotEmpty(message = "Campo Cpf é obrigatório")
-	@Column(name ="cpf", nullable = false, unique = true)
+	@Column(name ="cpf", nullable = false)
 	@CPF(message = "CPF inválido")
 	private String cpf;
 	

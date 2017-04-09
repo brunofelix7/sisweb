@@ -29,8 +29,8 @@ public class ClienteService implements ClienteDAO{
 	}
 	
 	@Override
-	public List<Cliente> findByTelefoneStartingWith(String telefone) {
-		List<Cliente> clientes = clienteRepository.findByTelefoneStartingWith(telefone);
+	public List<Cliente> findByTelefoneContaining(String telefone) {
+		List<Cliente> clientes = clienteRepository.findByTelefoneContaining(telefone);
 		return clientes;
 	}
 	
