@@ -61,7 +61,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.png" alt="..." class="img-circle profile_img"/>
+                <img src="/images/img.png" alt="..." class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
@@ -118,7 +118,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.png" alt=""/>Bruno Felix
+                    <img src="/images/img.png" alt=""/>Bruno Felix
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -143,54 +143,71 @@
             </div>
 
               <div class="title_right">
-                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Nome..."/>
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
+              
+              <!-- PESQUISA POR NOME -->
+              <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
+              <form method="GET" th:action="@{/clientes/pesquisar/nome}" >
+                <div class="input-group">
+                  <input name="nome" type="text" class="form-control" placeholder="Nome..."/>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                  </span>
                 </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Telefone..."/>
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
+              </form>
+              </div>
+              
+              <!-- PESQUISA POR TELEFONE -->
+              <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
+              <form method="GET" th:action="@{/clientes/pesquisar/telefone}" >
+                <div class="input-group">
+                  <input name="telefone" type="text" class="form-control" placeholder="Telefone..."/>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                  </span>
                 </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="input-group">
-                      <select class="form-control" name="categoria">
-                          <option value="" label="-- Sexo --"></option>
-                          <option value="MASCULINO" label="Masculino"></option>
-                          <option value="FEMININO" label="Feminino"></option>
-                      </select>
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                      </span>
-                  </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="input-group">
-                      <select class="form-control" name="categoria">
-                          <option value="" label="-- Cidade --"></option>
-                          <!-- Buscar cidades cadastradas -->
-                        </select>
-                        <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
-                  <div class="input-group">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><i class="fa fa-remove"></i> Limpar filtros</button>
-                    </span> 
-                  </div>
-                </div>
-                </div>
+              </form>
+              </div>
+              
+             <!-- FILTRAR POR SEXO -->
+             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
+             <form method="GET" th:action="@{/clientes/filtrar/sexo}" >
+               <div class="input-group">
+                   <select class="form-control" id="sexo" name="sexo" >
+						<option value="" label="-- Sexo --"></option>
+						<option th:each="enums : ${enumSexo}" th:value="${enums}" th:text="${enums.descricao}"></option>
+                 	</select>
+                   <span class="input-group-btn">
+                     <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                   </span>
+               </div>
+             </form>
+             </div>
+             
+             <!-- FILTRAR POR CIDADE -->   
+             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
+             <form method="GET" th:action="@{/clientes/filtrar/cidade}" >
+               <div class="input-group">
+                   <select class="form-control" name="cidade">
+                       <option value="" label="-- Cidade --"></option>
+                       <option th:each="cliente : ${clientes}" th:value="${cliente.endereco.cidade}" th:text="${cliente.endereco.cidade}"></option>
+                     </select>
+                     <span class="input-group-btn">
+                   <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                 </span>
+               </div>
+             </form>
+             </div>
+                
+             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-left top_search">
+             <form method="GET" th:action="@{/clientes}" >
+               <div class="input-group">
+                 <span class="input-group-btn">
+                   <button type="submit" th:href="@{/clientes}" class="btn btn-default"><i class="fa fa-remove"></i> Limpar filtros</button>
+                 </span> 
+               </div>
+             </form>
+             </div>
+            
               </div>
 
             <div class="clearfix"></div>
@@ -201,6 +218,7 @@
                     <tr class="headings">
                       <th class="column-title">Nome</th>
                       <th class="column-title">Email</th>
+                      <th class="column-title">Telefone</th>
                       <th class="column-title">CPF</th>
                       <th class="column-title">Sexo</th>
                       <th class="column-title">Data de Nascimento</th>
@@ -215,14 +233,15 @@
                     <tr id="count" th:each="cliente : ${clientes}">
 						<td th:text="${cliente.nome}"></td>
 						<td th:text="${cliente.email}"></td>
+						<td th:text="${cliente.telefone}"></td>
 						<td th:text="${cliente.cpf}"></td>
-						<td th:text="${cliente.sexo}"></td>
+						<td th:text="${#strings.capitalize(cliente.sexo)}"></td>
 						<td th:text="${#dates.format(cliente.data_nascimento, 'dd/MM/yyyy')}"></td>
 						<td class="table-pesq-produto-col-acoes">
 						
 							<div class="btn-group">
 								<a th:href="@{/clientes/visualizar/{id}(id=${cliente.id})}" class="btn  btn-default btn-xs">
-									<i class="fa  fa-fw  fa-eye"></i>
+									<i class="fa  fa-fw  fa-search"></i>
 								</a>
 							
 								<a th:href="@{/clientes/atualizar/{id}(id=${cliente.id})}" class="btn  btn-default btn-xs">
@@ -237,7 +256,7 @@
 						</td>
 					</tr>
 					<tr id="not-count" th:if="${clientes.empty}">
-						<td colspan="6">Nenhum usuário encontrado.</td>
+						<td colspan="6">Nenhum cliente encontrado.</td>
 					</tr>
                   </tbody>
                 </table>

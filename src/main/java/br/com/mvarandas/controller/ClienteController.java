@@ -50,7 +50,13 @@ public class ClienteController {
 	 * CADASTRAR UM CLIENTE
 	 */
 	@RequestMapping(value = Routes.CLIENTES_SALVAR, method = RequestMethod.POST)
-	public ModelAndView salvar(@ModelAttribute(value = "cliente") @Validated Cliente cliente, Errors errors, @ModelAttribute(value = "endereco") @Validated Endereco endereco, Errors errorsAddress, ModelMap modelMap){
+	public ModelAndView salvar(
+			@ModelAttribute(value = "cliente") @Validated Cliente cliente, Errors errors, 
+			@ModelAttribute(value = "endereco") @Validated Endereco endereco, Errors errorsAddress, 
+			@ModelAttribute(value = "cpf") String cpf, 
+			@ModelAttribute(value = "telefone") String telefone, 
+			@ModelAttribute(value = "cep") String cep, 
+			@ModelAttribute(value = "numero") String numero, ModelMap modelMap){
 		ModelAndView mv = new ModelAndView(Views.NOVO);
 		modelMap.addAttribute("endereco", endereco);
 		modelMap.addAttribute("cliente", cliente);
@@ -59,6 +65,10 @@ public class ClienteController {
 			System.out.println(errorsAddress.getFieldErrors());
 			return mv;
 		}else{
+			cliente.setCpf(cpf.replaceAll("\\D",""));
+			cliente.setTelefone(telefone.replaceAll("\\D",""));
+			endereco.setCep(cep.replaceAll("\\D",""));
+			endereco.setNumero(numero.replaceAll("\\D",""));
 			cliente.setEndereco(endereco);
 			clienteService.saveCliente(cliente);
 			mv.addObject("mensagem", "Cadastrado com sucesso!");
@@ -81,13 +91,24 @@ public class ClienteController {
 	 * ATUALIZAR UM CLIENTE
 	 */
 	@RequestMapping(value = "/alterar", method = RequestMethod.POST)
-	public ModelAndView salvarAlteracoes(@ModelAttribute(value = "endereco") @Validated Endereco endereco, Errors errorsEndereco, @ModelAttribute(value = "cliente") @Validated Cliente cliente, Errors errors, ModelMap modelMap){
+	public ModelAndView salvarAlteracoes(
+			@ModelAttribute(value = "endereco") @Validated Endereco endereco, Errors errorsEndereco, 
+			@ModelAttribute(value = "cliente") @Validated Cliente cliente, Errors errors, 
+			@ModelAttribute(value = "cpf") String cpf, 
+			@ModelAttribute(value = "telefone") String telefone, 
+			@ModelAttribute(value = "cep") String cep, 
+			@ModelAttribute(value = "numero") String numero,
+			ModelMap modelMap){
 		ModelAndView mv = new ModelAndView(Views.ATUALIZAR);
 		modelMap.addAttribute("endereco", endereco);
 		modelMap.addAttribute("cliente", cliente);
 		if(errors.hasErrors() || errorsEndereco.hasErrors()){
 			return mv;
 		}else{
+			cliente.setCpf(cpf.replaceAll("\\D",""));
+			cliente.setTelefone(telefone.replaceAll("\\D",""));
+			endereco.setCep(cep.replaceAll("\\D",""));
+			endereco.setNumero(numero.replaceAll("\\D",""));
 			cliente.setEndereco(endereco);
 			clienteService.updateCliente(cliente);
 			mv.addObject("mensagem", "Dados atualizados com sucesso!");
@@ -152,7 +173,7 @@ public class ClienteController {
 	 * FILTRAR POR SEXO
 	 */
 	@RequestMapping(value = Routes.CLIENTES_FILTRAR_SEXO, method = RequestMethod.GET)
-	public String filtrarSexo(@ModelAttribute(value = "sexo") String sexo, ModelMap modelMap){
+	public String filtrarSexo(@ModelAttribute(value = "sexo") EnumSexo sexo, ModelMap modelMap){
 		List<Cliente> clientes = clienteService.findBySexo(sexo);
 		modelMap.addAttribute("clientes", clientes);
 		return Views.LISTAR;

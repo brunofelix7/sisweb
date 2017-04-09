@@ -61,7 +61,7 @@
                         <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img th:src="@{images/img.png}" alt="..." class="img-circle profile_img"/>
+                <img th:src="@{/images/img.png}" alt="..." class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
@@ -118,7 +118,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img th:src="@{images/img.png}" alt=""/>Bruno Felix
+                    <img th:src="@{/images/img.png}" alt=""/>Bruno Felix
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -179,7 +179,7 @@
                           <input type="text" id="rua" name="rua" th:value="${endereco.rua}" class="form-control col-md-3 col-xs-12"/>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input type="text" id="numero" name="numero" th:value="${endereco.numero}" class="form-control col-md-3 col-xs-12" placeholder="Número"/>
+                          <input type="text" id="numero" name="numero" th:value="${endereco.numero}" class="form-control col-md-3 col-xs-12" placeholder="Número" data-inputmask="'mask' : '99999'"/>
                         </div>
                         </div>
                       </div>

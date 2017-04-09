@@ -2,6 +2,7 @@ package br.com.mvarandas.dao;
 
 import java.util.List;
 import br.com.mvarandas.entity.Cliente;
+import br.com.mvarandas.model.EnumSexo;
 
 public interface ClienteDAO {
 
@@ -11,7 +12,7 @@ public interface ClienteDAO {
 	
 	List<Cliente> findByTelefoneStartingWith(String telefone);
 	
-	List<Cliente> findBySexo(String sexo);
+	List<Cliente> findBySexo(EnumSexo sexo);
 	
 	List<Cliente> findByEnderecoCidade(String cidade);
 	

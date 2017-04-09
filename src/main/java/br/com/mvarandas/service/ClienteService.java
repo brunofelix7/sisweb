@@ -1,10 +1,13 @@
 package br.com.mvarandas.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.mvarandas.dao.ClienteDAO;
 import br.com.mvarandas.entity.Cliente;
+import br.com.mvarandas.model.EnumSexo;
 import br.com.mvarandas.repository.ClienteRepository;
 
 @Service
@@ -32,7 +35,7 @@ public class ClienteService implements ClienteDAO{
 	}
 	
 	@Override
-	public List<Cliente> findBySexo(String sexo) {
+	public List<Cliente> findBySexo(EnumSexo sexo) {
 		List<Cliente> clientes = clienteRepository.findBySexo(sexo);
 		return clientes;
 	}

@@ -1,8 +1,11 @@
 package br.com.mvarandas.repository;
 
 import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import br.com.mvarandas.entity.Cliente;
+import br.com.mvarandas.model.EnumSexo;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
@@ -10,7 +13,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	
 	List<Cliente> findByTelefoneStartingWith(String telefone);
 	
-	List<Cliente> findBySexo(String sexo);
+	List<Cliente> findBySexo(EnumSexo sexo);
 	
 	List<Cliente> findByEnderecoCidade(String cidade);
 	

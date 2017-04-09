@@ -61,7 +61,7 @@
                         <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img th:src="@{images/img.png}" alt="..." class="img-circle profile_img"/>
+                <img th:src="@{/images/img.png}" alt="..." class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
                 <span>Bem-vindo,</span>
@@ -118,7 +118,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img th:src="@{images/img.png}" alt=""/>Bruno Felix
+                    <img th:src="@{/images/img.png}" alt=""/>Bruno Felix
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -135,7 +135,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Cadastrar novo cliente</h3>
+                <h3>Editar dados</h3>
               </div>
             </div>
 
@@ -147,7 +147,7 @@
 
                   <div class="x_content">
                     <br />
-                    <form method="POST" th:action="@{/clientes/salvar}" th:object="${cliente}" id="demo-form2" class="form-horizontal form-label-left">
+                    <form method="POST" th:action="@{/clientes/alterar}" th:object="${cliente}" id="demo-form2" class="form-horizontal form-label-left">
 
 					<!-- MENSAGEM DE SUCESSO -->
 		    		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
@@ -163,6 +163,8 @@
 			    			<span th:text="${error.message}"></span>
 			    		</div>
 		    		</div>
+		    		
+		    		<input type="hidden" th:field="*{id}"/>
 
                       <!-- NOME | RUA | NÚMERO -->
                       <div class="form-group">
@@ -176,10 +178,10 @@
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Rua 
                         </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
-                          <input type="text" id="rua" name="rua" th:value="${endereco.rua}" class="form-control col-md-3 col-xs-12"/>
+                          <input type="text" id="rua" name="rua" th:value="${cliente.endereco.rua}" class="form-control col-md-3 col-xs-12"/>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input type="text" id="numero" name="numero" th:value="${endereco.numero}" class="form-control col-md-3 col-xs-12" placeholder="Número"/>
+                          <input type="text" id="numero" name="numero" th:value="${cliente.endereco.numero}" class="form-control col-md-3 col-xs-12" placeholder="Número" data-inputmask="'mask' : '99999'"/>
                         </div>
                         </div>
                       </div>
@@ -196,7 +198,7 @@
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" for="last-name">CEP 
                         </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
-                          <input type="text" id="cep" name="cep" th:value="${endereco.cep}" class="form-control col-md-3 col-xs-12" placeholder="99999-999" data-inputmask="'mask' : '99999-999'"/>
+                          <input type="text" id="cep" name="cep" th:value="${cliente.endereco.cep}" class="form-control col-md-3 col-xs-12" placeholder="99999-999" data-inputmask="'mask' : '99999-999'"/>
                         </div>
                       </div>
                       </div>
@@ -213,7 +215,7 @@
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" for="last-name">Bairro 
                         </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
-                          <input type="text" id="bairro" name="bairro" th:field="*{endereco.bairro}" class="form-control col-md-3 col-xs-12"/>
+                          <input type="text" id="bairro" name="bairro" th:value="${cliente.endereco.bairro}" class="form-control col-md-3 col-xs-12"/>
                         </div>
                       </div>
                       </div>
@@ -230,10 +232,10 @@
                         <label class="control-label col-md-1 col-sm-1 col-xs-12" for="last-name">Cidade 
                         </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
-                          <input type="text" id="cidade" name="cidade" th:value="${endereco.cidade}" class="form-control col-md-3 col-xs-12"/>
+                          <input type="text" id="cidade" name="cidade" th:value="${cliente.endereco.cidade}" class="form-control col-md-3 col-xs-12"/>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <select class="form-control" id="estado" name="estado" th:value="${endereco.estado}">
+                          <select class="form-control" id="estado" name="estado" th:value="${cliente.endereco.estado}">
                             <option value="" label="-- Estado --"></option>
                             <option th:each="enums : ${enumEstado}" th:value="${enums}" th:text="${enums.descricao}"></option>
                       	  </select>
